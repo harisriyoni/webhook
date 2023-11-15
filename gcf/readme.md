@@ -1,9 +1,7 @@
 # Webhook Layanan WhatsAuth
-
 WebHook Menggunakan method HTTP POST dengan Header bernama Secret  
 ![image](https://github.com/whatsauth/webhook/assets/11188109/7734295e-89bb-4b05-ab05-d2ee0bdb6019)  
 Format JSON yang dikirim ke WebHook :
-
 ```go
 type WAMessage struct {
 	Phone_number       string  `json:"phone_number,omitempty" bson:"phone_number,omitempty"`
@@ -24,13 +22,11 @@ type WAMessage struct {
 	Longitude          float64 `json:"longitude,omitempty" bson:"longitude,omitempty"`
 }
 ```
-
 [Contoh Source Code WebHook](./gcf/function.go)
 
+
 ## Langkah-langkah pembuatan GCP
-
 Pastikan sudah setting environment variabel pada GCF antara lain :
-
 1. SECRET : sebagai pengaman endpoint GCF webhook yang di tembak dari whatsauth
 2. TOKEN : token yang digunakan untuk menggunakan API WhatsAuth
 3. Buat Cloud Function dan pilih server jakarta indonesia  
@@ -41,7 +37,6 @@ Pastikan sudah setting environment variabel pada GCF antara lain :
    ![image](https://github.com/whatsauth/webhook/assets/11188109/fd30ddad-eca0-452a-8e1d-d7038401f7e6)
 
 ## Release Package
-
 ```sh
 go get -u all					#update existing package
 go mod tidy					#generate go mod

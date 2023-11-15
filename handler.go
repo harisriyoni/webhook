@@ -3,15 +3,14 @@ package webhook
 import (
 	"encoding/json"
 	"fmt"
-	"math/rand"
-	"net/http"
-	"os"
-	"strconv"
-
 	"github.com/aiteung/atapi"
 	"github.com/aiteung/atmessage"
 	"github.com/aiteung/module/model"
 	"github.com/whatsauth/wa"
+	"math/rand"
+	"net/http"
+	"os"
+	"strconv"
 )
 
 func PostBalasan(w http.ResponseWriter, r *http.Request) {
@@ -27,7 +26,7 @@ func PostBalasan(w http.ResponseWriter, r *http.Request) {
 				location = "Unknown Location"
 			}
 
-			reply := fmt.Sprintf("Anyyong Aseooo kamu pasti lagi di %s \n Koordinatenya : %s - %s\n Cara Penggunaan WhatsAuth Ada di link dibawah ini"+
+			reply := fmt.Sprintf("Anyong Aseoo  kamu pasti lagi di %s \n Koordinatenya : %s - %s\n Cara Penggunaan WhatsAuth Ada di link dibawah ini"+
 				"yaa kak %s\n", location,
 				strconv.Itoa(int(msg.Longitude)), strconv.Itoa(int(msg.Latitude)), link)
 			dt := &wa.TextMessage{
@@ -36,11 +35,39 @@ func PostBalasan(w http.ResponseWriter, r *http.Request) {
 				Messages: reply,
 			}
 			resp, _ = atapi.PostStructWithToken[atmessage.Response]("Token", os.Getenv("TOKEN"), dt, "https://api.wa.my.id/api/send/message/text")
-		} else {
+
+		} else if msg.Message == "Babi" || msg.Message == "Anjing" || msg.Message == "goblok" {
 			dt := &wa.TextMessage{
 				To:       msg.Phone_number,
 				IsGroup:  false,
-				Messages: "Hai Hai Haiii kamuuuui " + msg.Alias_name + "\n Hariss.. lagi gaadaa \n aku Harisbot salam kenall yaaaa \n Cara penggunaan WhatsAuth ada di link berikut ini ya kak...\n" + link,
+				Messages: fmt.Sprintf("Ihh kakak %s kamu kasar bangett, aku jadi takut tauuu", msg.Alias_name),
+			}
+			resp, _ = atapi.PostStructWithToken[atmessage.Response]("Token", os.Getenv("TOKEN"), dt, "https://api.wa.my.id/api/send/message/text")
+
+		} else if msg.Message == "cantik" || msg.Message == "ganteng" || msg.Message == "cakep" {
+			dt := &wa.TextMessage{
+				To:       msg.Phone_number,
+				IsGroup:  false,
+				Messages: fmt.Sprintf("makasiihh kakak %s kamu jugaa cakep kooo", msg.Alias_name),
+			}
+			resp, _ = atapi.PostStructWithToken[atmessage.Response]("Token", os.Getenv("TOKEN"), dt, "https://api.wa.my.id/api/send/message/text")
+
+		} else {
+			randm := []string{
+				"Anyong Aseoo Yeoboo " + msg.Alias_name + "\nHaris lagi gaadaa \n aku Haris salam kenall yaaaa, Sarangheo \n Cara penggunaan WhatsAuth ada di link berikut ini ya kak...\n" + link,
+				"IHHH jangan SPAAM berisik tau giseu lagi tidur",
+				"Kamu ganteng tau",
+				"Ihhh kamu cantik banget",
+				"bro, mending beliin aku nasgor",
+				"Jangan galak galak dong kak, aku takut tauu",
+				"Mawar Indah hanya akan muncul dipagi hari, MAKANYA BANGUN PAGI KAK",
+				"Cihuyyyy hari ini giseuu bahagiaaa banget",
+				"Bercandyaaa berrcandyaaaa",
+			}
+			dt := &wa.TextMessage{
+				To:       msg.Phone_number,
+				IsGroup:  false,
+				Messages: GetRandomString(randm),
 			}
 			resp, _ = atapi.PostStructWithToken[atmessage.Response]("Token", os.Getenv("TOKEN"), dt, "https://api.wa.my.id/api/send/message/text")
 		}
@@ -89,7 +116,7 @@ func Liveloc(w http.ResponseWriter, r *http.Request) {
 		location = "Unknown Location"
 	}
 
-	reply := fmt.Sprintf("Hai hai haiii kamu pasti lagi di %s \n Koordinatenya : %s - %s\n", location,
+	reply := fmt.Sprintf("Anyong Aseoo kamu pasti lagi di %s \n Koordinatenya : %s - %s\n", location,
 		strconv.Itoa(int(msg.Longitude)), strconv.Itoa(int(msg.Latitude)))
 
 	if r.Header.Get("Secret") == os.Getenv("SECRET") {
