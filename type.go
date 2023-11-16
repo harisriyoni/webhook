@@ -5,7 +5,7 @@ type Reply struct {
 }
 
 var stringreply = []string{
-	"IHHH jangan SPAAM berisik tau giseu lagi tidur",
+	"IHHH jangan SPAAM berisik tau aku lagi dijalan nih",
 	"Kamu ganteng tau",
 	"Ihhh kamu cantik banget",
 	"mending beliin aku nasgor",
