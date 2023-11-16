@@ -54,7 +54,11 @@ func PostBalasan(w http.ResponseWriter, r *http.Request) {
 
 		} else {
 			randm := []string{
-				"Anyong Aseoo Yeoboo" + msg.Alias_name + "\n Haris lagi gaadaa \n aku Haris salam kenall yaaaa, Sarangheo \n Cara penggunaan WhatsAuth ada di link berikut ini ya kak...\n" + link,
+				"Anyong Aseoo Yeoboo " + msg.Alias_name + "\n Haris lagi gaadaa \n aku Haris Bot salam kenall yaaaa, Sarangheo <3 \n Cara penggunaan WhatsAuth ada di link berikut ini ya kak...\n" + link,
+				"ihh jangan SPAM DOng berisik tau aku lagi dijalan nih",
+				"Kamu ganteng tau",
+				"Ihhh kamu cantik banget",
+				"Senja memang indah tapi kamu tetap yang terindah Aseek",
 			}
 			dt := &wa.TextMessage{
 				To:       msg.Phone_number,
