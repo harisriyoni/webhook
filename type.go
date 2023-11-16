@@ -8,8 +8,6 @@ var stringreply = []string{
 	"IHHH jangan SPAAM berisik tau aku lagi dijalan nih",
 	"Kamu ganteng tau",
 	"Ihhh kamu cantik banget",
-	"mending beliin aku nasgor",
-	"Jangan sekyiaa dong kak, aku takut tauu",
-	"Mawar Indah hanya akan muncul dipagi hari, MAKANYA BANGUN PAGI KAK",
+	"Senja memang indah tapi kamu tetap yang terindah Aseek",
 	"Anyong Aseoo Yeoboo, Aiigoo Haris lagi gaadaa",
 }
